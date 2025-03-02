@@ -9,7 +9,7 @@ const editProfile = async (req, res) => {
     address,
     "fullname, mobilenumber, email, address "
   );
-console.log(fullname, phonenumber, email, address ,"fullname, phonenumber, email, address ");
+console.log(fullname, phonenumber, email, address ,"details received by the user ");
 
   const userId = req.user._id;
 
@@ -48,7 +48,7 @@ const getProfile = async (req, res) => {
 
   const user = await User.findById(req.user._id);
   res.send(user)
-  console.log(user,"useruseruseruser");
+ 
   
   
 };
