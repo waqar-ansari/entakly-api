@@ -30,10 +30,21 @@ const userSchema = new Schema(
       required: true,
     },
     address: {
-      street: String,
-      city: String,
-      state: String,
-      zip: String,
+      street:{
+        type: String,
+      },
+      city: {
+        type: String,
+      },
+      state: {
+        type: String,
+      },
+      zip: {
+        type: String,
+      },
+      country:{
+        type: String,
+      }
     },
   },
   { timestamps: true }

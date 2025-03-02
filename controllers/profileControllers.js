@@ -7,9 +7,8 @@ const editProfile = async (req, res) => {
     phonenumber,
     email,
     address,
-    "fullname, mobilenumber, email, address "
+    "all details from frontend"
   );
-console.log(fullname, phonenumber, email, address ,"fullname, phonenumber, email, address ");
 
   const userId = req.user._id;
 
@@ -25,9 +24,20 @@ console.log(fullname, phonenumber, email, address ,"fullname, phonenumber, email
     user.fullname = fullname || user.fullname;
     user.phonenumber = phonenumber || user.phonenumber;
     user.email = email || user.email;
+    user.address = {
+      street: address?.street ?? user.address.street,
+      city: address?.city ?? user.address.city,
+      state: address?.state ?? user.address.state,
+      zip: address?.zip ?? user.address.zip,
+      country: address?.country ?? user.address.country,
+    };
+    
+console.log(user.address,"saved user addressss");
 
     // Save the updated user
+    console.log(user.address, "User Address Before Saving");
     await user.save();
+    console.log(await User.findById(userId), "User After Saving");
 
     return res.status(201).json({
       message: "Profile updated successfully",
@@ -36,6 +46,7 @@ console.log(fullname, phonenumber, email, address ,"fullname, phonenumber, email
         fullname: user.fullname,
         email: user.email,
         phonenumber: user.phonenumber,
+        address: user.address
       },
     });
   } catch (error) {
