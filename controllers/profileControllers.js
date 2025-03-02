@@ -59,7 +59,7 @@ const getProfile = async (req, res) => {
 
   const user = await User.findById(req.user._id);
   res.send(user)
-  console.log(user,"useruseruseruser");
+ 
   
   
 };
